@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Booking</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Firebase v8 -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <script src="firebase-config.js"></script>
+  <script src="./script/app.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>Admin Dashboard</h1>
+  <nav><a href="index.html">Home</a></nav>
+  <button onclick="logout()" class="btn">Logout</button>
+</header>
+<main>
+   <!-- Summary Cards -->
+  <section class="grid-3">
+    <div class="card"><h2 id="tcount">0</h2>Teachers</div>
+    <div class="card"><h2 id="scount">0</h2>Students</div>
+    <div class="card"><h2 id="acount">0</h2>Appointments</div>
+  </section>
+<!-- Add Teacher -->
+  <section class="card">
+    <h3>Add Teacher</h3>
+    <label>Name <input id="t-name"></label>
+    <label>Department <input id="t-dept"></label>
+    <label>Subject <input id="t-subject"></label>
+    <button id="btn-add-teacher" class="btn">Add Teacher</button>
+  </section>
+ <!-- Teachers List -->
+  <section class="card">
+    <h3>All Teachers</h3>
+    <div id="admin-teachers"></div>
+  </section>
+
+  <!-- Students List -->
+  <section class="card">
+    <h3>All Students</h3>
+    <div id="admin-students"></div>
+    </section>
+</main>
+
+<script>
+// Block dashboard if admin not logged in
+firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+        window.location.href = "admin-login.html";  // Force login
+    }
+});
+// Logout
+function logout() {
+    firebase.auth().signOut().then(() => {
+        window.location.href = "admin-login.html";
+    });
+}
+</script>
+
+</body>
+</html>

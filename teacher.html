@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Teacher - Booking</title>
+<link rel="stylesheet" href="styles.css" />
+
+<!-- Firebase v8 SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="firebase-config.js"></script>
+<script src="./script/app.js" defer></script>
+</head>
+<body>
+<header><h1>Teacher Panel</h1><nav><a href="index.html">Home</a></nav></header>
+
+<main class="container">
+  <section class="card">
+    <h3>Login</h3>
+
+    <label>Email <input id="teacher-email" /></label>
+    <label>Password <input id="teacher-pass" type="password" /></label>
+    <button id="btn-teacher-login" class="btn">Login</button>
+
+    <div id="teacher-actions" style="display:none;margin-top:12px">
+      <h4>Your Schedule</h4>
+      <label>Available slot <input id="slot-time" type="datetime-local" /></label>
+      <button id="btn-add-slot" class="btn">Add Slot</button>
+      <div id="slots-list" class="small"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h4>Appointments to Approve</h4>
+    <div id="teacher-appointments" class="small"></div>
+  </section>
+</main>
+
+</body>
+</html>

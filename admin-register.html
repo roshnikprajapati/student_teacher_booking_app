@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Registration</title>
+<link rel="stylesheet" href="styles.css">
+
+<!-- Firebase v8 -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<!-- Your Firebase Config -->
+<script src="firebase-config.js"></script>
+<script src="./script/app.js" defer></script>
+</head>
+
+<body>
+
+<h2>Admin Registration</h2>
+
+<div class="container">
+
+    <label>Admin Email</label>
+    <input type="email" id="adminRegEmail" placeholder="Enter admin email">
+
+    <label>Password</label>
+    <input type="password" id="adminRegPass" placeholder="Enter password">
+
+    <label>Admin Secret Code</label>
+    <input type="text" id="adminCode" placeholder="Enter Admin Code">
+
+    <button id="registerAdminBtn">Register Admin</button>
+
+    <p style="text-align:center;margin-top:15px;">
+        Already have an account? <a href="admin-login.html">Login</a>
+    </p>
+
+</div>
+
+<script>
+// Admin Secret Code
+const ADMIN_SECRET = "ADMIN";
+
+document.getElementById("registerAdminBtn").addEventListener("click", function () {
+
+    const email = document.getElementById("adminRegEmail").value;
+    const pass = document.getElementById("adminRegPass").value;
+    const code = document.getElementById("adminCode").value;
+
+    if (code !== ADMIN_SECRET) {
+        alert("Invalid Admin Code!");
+        return;
+    }
+
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+        .then(userCredential => {
+            const user = userCredential.user;
+
+            // Save admin in Firestore
+            db.collection("admins").doc(user.uid).set({
+                email: email
+            }).then(() => {
+                alert("Admin Registered Successfully!");
+                window.location.href = "admin.html";
+            });
+
+        })
+        .catch(error => {
+            alert("Error: " + error.message);
+        });
+});
+</script>
+
+</body>
+</html>

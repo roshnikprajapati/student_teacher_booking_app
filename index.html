@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student-Teacher Booking - Home</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Firebase v8 -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <script src="firebase-config.js"></script>
+  <script src="./script/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Student-Teacher Booking System</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="student.html">Student</a> |
+      <a href="teacher.html">Teacher</a> |
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Book appointments with your teachers easily</h2>
+      <p>Register, search teachers, and schedule meetings. Uses Firebase (Auth + Firestore).</p>
+      <div class="cta">
+        <a class="btn" href="student.html">Get Started (Student)</a>
+        <a class="btn" href="teacher.html">Teacher Login</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <h3>Features</h3>
+      <ul>
+        <li>Student registration & login (Firebase Auth)</li>
+        <li>Admin can add/update/delete teachers</li>
+        <li>Teachers can create available slots, approve/cancel appointments</li>
+        <li>Students can book appointments and send messages</li>
+        <li>Logging </li>
+        <!-- (console + Firestore action logs) -->
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Student-Teacher Booking App</p>
+  </footer>
+
+</body>
+</html>

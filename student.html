@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student - Booking</title>
+  <link rel="stylesheet" href="styles.css" />
+<!-- Firebase v8 -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="firebase-config.js"></script>
+<script src="./script/app.js" defer></script>
+</head>
+<body>
+  <header><h1>Student Panel</h1><nav><a href="index.html">Home</a></nav></header>
+  <main class="container">
+    <section class="card">
+      <h3>Register / Login</h3>
+      <div id="auth-forms">
+        <div id="register-form">
+          <label>Name <input id="reg-name" /></label>
+          <label>Email <input id="reg-email" /></label>
+          <label>Password <input id="reg-pass" type="password" /></label>
+          <button id="btn-register" class="btn">Register</button>
+        </div>
+        <hr />
+        <div id="login-form">
+          <label>Email <input id="login-email" /></label>
+          <label>Password <input id="login-pass" type="password" /></label>
+          <button id="btn-login" class="btn">Login</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h4>Find Teachers</h4>
+      <label>Search <input id="search-teacher" placeholder="Name, department or subject" /></label>
+      <div id="teacher-list" class="small"></div>
+    </aside>
+
+    <section class="card" style="grid-column:1/-1">
+      <h3>Selected Teacher / Book Appointment</h3>
+      <div id="selected-teacher" class="small">No teacher selected</div>
+      <label>Purpose <input id="appt-purpose" /></label>
+      <label>Preferred Time <input id="appt-time" type="datetime-local" /></label>
+      <button id="btn-book" class="btn">Book Appointment</button>
+      <h4>Your Appointments</h4>
+      <div id="appointments-list" class="small"></div>
+    </section>
+  </main>
+
+
+</body>
+</html>
